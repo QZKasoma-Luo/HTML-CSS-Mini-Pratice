@@ -8,6 +8,55 @@
     <script src="node_modules\.store\vue@2.6.11\node_modules\vue\dist\vue.js"></script>
 </head>
 <body>
-    <!-- Hello world! -->
+    <div id="app">
+        <p v-bind:style="[mystyle, mystyle2]">nice</p>
+        <input type="button" value="click" v-on:click="handleclick(1)">
+        <button @click="handleclick(1)">Here</button>
+        <hr>
+        <button @mouseover="handleclick(2)">over</button>
+        <button @dblclick="handleclick(2)">over</button>
+        <!-- dblclick  -->
+        <button @click="add">add-on</button>
+        <div v-if="grade>90">perfect</div>
+        <div v-else-if="grade<90">good</div>
+        <!-- use template to decide which element will use v-if true or false (show or no show) -->
+        <template v-if="flag"> 
+            <!-- The web engine will not read the template as html element -->
+            <div>perfect</div>
+            <div>perfect</div>
+            <div>perfect</div>
+            <div>perfect</div>
+        </template>
+    </div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                mystyle:{
+                    color:"red",
+                    fontszie:"30px",
+                },
+                mystyle2:{
+                    backgroundColor:"black",
+                },
+
+                arr:[12, 13],
+                flag:true,
+                grade:78,
+            },
+
+            methods: {
+                handleclick:function(id){
+                    alert("yes, the parameter is: " + id)
+                    console.log("yes, the parameter")
+                },
+                add(){
+                    // using this will point to the arr array in data
+                    this.arr.push(88)
+                    console.log(this.arr)
+                }
+            },
+        })
+    </script>
 </body>
 </html>
