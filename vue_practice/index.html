@@ -17,16 +17,26 @@
         <button @dblclick="handleclick(2)">over</button>
         <!-- dblclick  -->
         <button @click="add">add-on</button>
+        <!-- v-if will be create everytime each time whenever the condition is changed that makes the flag become to the oppsite of the orignal result -->
         <div v-if="grade>90">perfect</div>
         <div v-else-if="grade<90">good</div>
         <!-- use template to decide which element will use v-if true or false (show or no show) -->
         <template v-if="flag"> 
-            <!-- The web engine will not read the template as html element -->
+            <!-- The web engine will not read the template as html element here-->
             <div>perfect</div>
             <div>perfect</div>
             <div>perfect</div>
             <div>perfect</div>
         </template>
+
+        <!-- v-show practice -->
+        <div id="_show">
+            <!-- if the flag = false, this html code will still exist, but the dispay will be set to none -->
+            <h1 v-show="flag">I am v-show</h1> 
+            <div style="width: 100px; height: 100px; background-color: aqua;" v-show="flagForChange">I will be hiden if you press the button</div>
+            <hr>
+            <button @click="change()">button for hide the text</button>
+        </div>
     </div>
     <script>
         var vm = new Vue({
@@ -43,6 +53,7 @@
                 arr:[12, 13],
                 flag:true,
                 grade:78,
+                flagForChange:true,
             },
 
             methods: {
@@ -54,7 +65,12 @@
                     // using this will point to the arr array in data
                     this.arr.push(88)
                     console.log(this.arr)
-                }
+                },
+
+                change(){
+                    // change the flag when the button is clicked
+                    this.flagForChange = !this.flagForChange 
+                },
             },
         })
     </script>
