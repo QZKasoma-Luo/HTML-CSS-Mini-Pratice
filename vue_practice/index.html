@@ -32,6 +32,7 @@
         <!-- v-show practice -->
         <div id="_show">
             <!-- if the flag = false, this html code will still exist, but the dispay will be set to none -->
+            <!-- V-show does not support in <template> and <v-else> -->
             <h1 v-show="flag">I am v-show</h1> 
             <div style="width: 100px; height: 100px; background-color: aqua;" v-show="flagForChange">I will be hiden if you press the button</div>
             <hr>
